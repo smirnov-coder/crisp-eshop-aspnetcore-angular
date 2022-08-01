@@ -1,0 +1,24 @@
+﻿<ul *ngIf="linkParams$ | async as params" class="pagination">
+    <li class="pagination-item" [class.inactive]="page === 1">
+        <a *ngIf="page > 1" routerLink="/shop" [queryParams]="getQueryParams(params, page - 1)" 
+           class="pagination-link pagination-link-arrows">
+            <<
+        </a>
+        <span *ngIf="page === 1" class="pagination-link pagination-link-arrows"><<</span>
+    </li>
+    <ng-container *ngFor="let pageNumber of pages">
+        <li *ngIf="pageNumber === 0" class="pagination-item pagination-item-dots">
+            ..
+        </li>
+        <li *ngIf="pageNumber > 0" class="pagination-item" [class.active]="pageNumber === page">
+            <a routerLink="/shop" [queryParams]="getQueryParams(params, pageNumber)" class="pagination-link">{{ pageNumber }}</a>
+        </li>
+    </ng-container>
+    <li class="pagination-item" [class.inactive]="page === totalPages">
+        <a *ngIf="page < totalPages" routerLink="/shop" [queryParams]="getQueryParams(params, page + 1)" 
+           class="pagination-link pagination-link-arrows">
+            >>
+        </a>
+        <span *ngIf="page === totalPages" class="pagination-link pagination-link-arrows">>></span>
+    </li>
+</ul>

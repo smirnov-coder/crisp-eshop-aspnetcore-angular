@@ -1,0 +1,19 @@
+﻿.product-catalog {
+    display: grid;
+    grid-template-columns: 415px 1fr;
+    grid-template-rows: 100%;
+    grid-template-areas: "filter list";
+
+    &__filter {
+        grid-area: filter;
+    }
+
+    &__list {
+        grid-area: list;
+    }
+
+    &__pagination {
+        display: block;
+        margin: 25px 0;
+    }
+}

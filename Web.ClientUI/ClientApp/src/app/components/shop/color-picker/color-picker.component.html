@@ -1,0 +1,9 @@
+﻿<div class="color-picker">
+    <div class="color-picker-title color-picker__title" *ngIf="title">{{ title }}</div>
+    <ul class="color-picker-items">
+        <li *ngFor="let color of items" class="color-picker-item" [class.selected]="color.isSelected"
+              (click)="handleClick(color); $event.stopPropagation(); $event.preventDefault()">
+            <span class="color-badge" [style.backgroundColor]="color.hex" [title]="color.name"></span>
+        </li>
+    </ul>
+</div>

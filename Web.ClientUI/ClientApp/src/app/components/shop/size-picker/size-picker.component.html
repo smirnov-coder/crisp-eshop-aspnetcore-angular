@@ -1,0 +1,10 @@
+﻿<div class="size-picker">
+    <div class="size-picker-title size-picker__title" *ngIf="title">{{ title }}</div>
+    <ul class="size-picker-items">
+        <li *ngFor="let item of items" class="size-picker-item" [class.unavailable]="!item.available"
+            [class.selected]="item.isSelected" (click)="handleClick(item)">
+            {{ item.size }}
+            <span class="size-picker-item-slash"></span>
+        </li>
+    </ul>
+</div>

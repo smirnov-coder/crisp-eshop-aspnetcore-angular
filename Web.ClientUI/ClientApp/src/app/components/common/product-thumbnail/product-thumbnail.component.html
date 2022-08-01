@@ -1,0 +1,11 @@
+﻿<article class="product-thumbnail">
+    <a [routerLink]="['/shop/product', selectedColor?.productId]" class="product-thumbnail-link">
+        <img [src]="getImageUrl()" [alt]="product?.name" class="product-thumbnail-img" />
+        <p class="product-thumbnail-brand product-thumbnail__brand">{{ product?.brand }}</p>
+        <p class="product-thumbnail-name product-thumbnail__name">{{ product?.name }}</p>
+        <p class="product-thumbnail-price product-thumbnail__price">{{ product?.price | currency:'EUR' }}</p>
+        <div *ngIf="product?.availableColors && product?.availableColors?.length">
+            <color-picker [items]="getColors()" (itemSelected)="changeColor($event)"></color-picker>
+        </div>
+    </a>
+</article>

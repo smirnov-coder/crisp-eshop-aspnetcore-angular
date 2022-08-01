@@ -1,0 +1,13 @@
+﻿.home-page {
+    padding: 20px;
+
+    &__brands-carousel {
+        display: block;
+        margin-top: 20px;
+    }
+
+    &__promo-grid, &__promo-section-left {
+        display: block;
+        margin-top: 30px;
+    }
+}

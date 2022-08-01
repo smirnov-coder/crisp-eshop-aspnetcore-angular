@@ -1,0 +1,26 @@
+﻿<div class="product-gallery">
+    <swiper (swiper)="thumbsSwiper = $event"
+            [spaceBetween]="13"
+            [slidesPerView]="6"
+            [direction]="'vertical'"
+            [watchSlidesProgress]="true"
+            [slideClass]="'product-gallery-thumbs-slide'"
+            class="product-gallery-thumbs-slider">
+        <ng-template swiperSlide *ngFor="let image of images; index as i">
+            <div class="product-gallery-thumbs-slide-holder">
+                <img [src]="image" [alt]="i" />
+                <div class="product-gallery-thumbs-slide-border"></div>
+            </div>
+        </ng-template>
+    </swiper>
+    <swiper class="product-gallery-main-slider"
+            [thumbs]="{ swiper: thumbsSwiper }"
+            [effect]="'fade'"
+            [fadeEffect]="{ crossFade: true }">
+        <ng-template swiperSlide *ngFor="let image of images; index as i">
+            <div class="product-gallery-main-slide-holder">
+                <img [src]="image" [alt]="i" />
+            </div>
+        </ng-template>
+    </swiper>
+</div>

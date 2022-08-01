@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+
+  web.client-ui:
+    container_name: crisp--web-client-ui
+    image: crisp/web-client-ui
+    build:
+      context: .
+      dockerfile: Web.ClientUI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=https://*:5001
+    env_file:
+      - ./kestrel-ssl.env
+    ports:
+      - "8001:5001"
+    volumes:
+      - ${CRISP_CERTS_PATH}:/certs
+    depends_on:
+      - catalog
+
+  catalog:
+    container_name: crisp--microservices-catalog
+    image: crisp/microservices-catalog
+    build:
+      context: .
+      dockerfile: Microservices.Catalog/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5002

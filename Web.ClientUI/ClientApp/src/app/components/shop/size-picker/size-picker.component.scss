@@ -1,0 +1,62 @@
+﻿.size-picker {
+    &__title {
+        margin-bottom: 10px;
+    }
+    &-title {
+        font-family: Oswald-Regular;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+    &-items {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+    }
+
+    &-item {
+        position: relative;
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #C4C4C4;
+        margin: {
+            right: 10px;
+            bottom: 10px;
+        }
+        color: #828282;
+        font-family: Oswald-Regular;
+        font-size: 16px;
+        text-transform: uppercase;
+
+        &.selected {
+            border: 2px solid #000;
+            color: #000;
+        }
+
+        &-slash {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-right: 2px solid #C4C4C4;
+            transform: skew(45deg) translateX(-50%);
+        }
+
+        &.unavailable {
+            pointer-events: none;
+
+            & .size-picker-item-slash {
+                display: block;
+            }
+        }
+    }
+}

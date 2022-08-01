@@ -1,0 +1,22 @@
+﻿.layout {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer";
+
+    &__header {
+        grid-area: header;
+    }
+
+    &__content {
+        grid-area: content;
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+}

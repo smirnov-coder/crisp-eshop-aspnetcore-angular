@@ -1,0 +1,88 @@
+﻿.product-details {
+    display: grid;
+    grid-template-areas:
+        "gallery primary" 
+        "secondary secondary";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-column-gap: 50px;
+    max-width: 1242px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+
+    &-brand {
+        display: inline-block;
+        font-family: Oswald-Medium;
+        font-size: 16px;
+        color: #3F3F3F;
+        line-height: 1;
+        text-transform: uppercase;
+        padding: 8px 12px;
+        background-color: #F0F2F2;
+    }
+
+    &-name {
+        font-family: Oswald-Medium;
+        font-size: 48px;
+        color: #000;
+    }
+
+    &__name {
+        margin-bottom: 30px;
+    }
+
+    &-cost {
+        &__quantity, &__price {
+            display: inline-flex;
+            flex-direction: column;
+            margin-right: 25px;
+        }
+    }
+
+    &__cost {
+        margin-top: 35px;
+    }
+
+    &-primary-caption {
+        font-family: Oswald-Regular;
+        font-size: 14px;
+        color: #000;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    &-total-price {
+        font-family: Oswald-Medium;
+        font-size: 26px;
+        color: #000;
+        text-transform: uppercase;
+    }
+
+    &-buttons {
+        display: flex;
+        align-items: center;
+
+        &__btn:not(:last-of-type) {
+            margin-right: 20px;
+        }
+    }
+
+    &__buttons {
+        margin-top: 30px;
+    }
+
+    &-last-line {
+        font-family: Oswald-Medium;
+        font-size: 12px;
+        color: #828282;
+        text-transform: uppercase;
+
+        &__code {
+            font-family: Oswald-Regular;
+        }
+    }
+
+    &__last-line {
+        margin-top: 10px;
+    }
+}

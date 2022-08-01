@@ -1,0 +1,24 @@
+﻿.footer {
+    padding: 60px 20px 40px 20px;
+    background-color: #000;
+    color: #fff;
+
+    &-top {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        padding-bottom: 50px;
+    }
+
+    &-divider {
+        height: 1px;
+        background-color: #4F4F4F;
+        margin: 15px 0;
+    }
+
+    &-bottom {
+        font-family: Roboto-Bold;
+        font-size: 12px;
+        line-height: 27px;
+        text-transform: uppercase;
+    }
+}

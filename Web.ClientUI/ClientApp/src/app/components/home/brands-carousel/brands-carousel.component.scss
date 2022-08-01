@@ -1,0 +1,41 @@
+﻿.brands-carousel {
+    &-section {
+        padding-top: 18px;
+    }
+
+    &-border {
+        position: relative;
+        border: 2px solid #C4C4C4;
+        padding: 25px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-caption {
+        font-family: Oswald-Regular;
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #000;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 10;
+        transform: translate(-50%, -55%);
+        background-color: #fff;
+        padding: 0 60px;
+    }
+
+    &-slide-holder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        height: 140px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F0F2F2;
+        }
+    }
+}

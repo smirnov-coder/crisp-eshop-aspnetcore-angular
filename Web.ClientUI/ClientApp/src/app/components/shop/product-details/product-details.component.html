@@ -1,0 +1,41 @@
+﻿<section class="product-details">
+    <div class="product-details__gallery">
+        <product-gallery [images]="product?.imageGallery"></product-gallery>
+    </div>
+    <div class="product-details__primary-info">
+        <div>/// Breadcrumbs ///</div>
+        <div class="product-details-brand">{{ product?.brand }}</div>
+        <div class="product-details-name product-details__name">{{ product?.name }}</div>
+        <color-picker [items]="colors" 
+                      [title]="hasManyColors() ? 'Select color' : 'Color'"
+                      (itemSelected)="colorChanged($event)">
+        </color-picker>
+        <size-picker [title]="'Select size (inches)'" 
+                     [items]="sizes" 
+                     (itemSelected)="sizeChanged($event)">
+        </size-picker>
+        <div class="product-details-cost product-details__cost">
+            <div class="product-details-cost__quantity">
+                <div class="product-details-primary-caption">Quantity</div>
+                <stepper [(value)]="quantity" (valueChange)="calcTotalPrice($event)"></stepper>
+            </div>
+            <div class="product-details-cost__price">
+                <div class="product-details-primary-caption">Price Total</div>
+                <span class="product-details-total-price">{{ totalPrice | currency:'EUR' }}</span>
+            </div>
+        </div>
+        <div class="product-details-buttons product-details__buttons">
+            <button class="crisp-btn crisp-btn--primary product-details-buttons__btn">Add to cart</button>
+            <button class="crisp-btn crisp-btn--secondary product-details-buttons__btn">
+                <img src="/assets/images/heart-icon.svg" alt="heart-icon" [style.marginRight]="'10px'" />
+                Save
+            </button>
+        </div>
+        <div class="product-details-last-line product-details__last-line">
+            <span>Product code: <span class="product-details-last-line__code">{{ product?.code }}</span></span>
+        </div>
+    </div>
+    <div class="product-details__secondary-info">
+
+    </div>
+</section>

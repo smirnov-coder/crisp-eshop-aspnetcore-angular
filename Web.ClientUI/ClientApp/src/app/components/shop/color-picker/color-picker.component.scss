@@ -1,0 +1,50 @@
+﻿.color-picker {
+    &__title {
+        margin-bottom: 10px;
+    }
+
+    &-title {
+        font-family: Oswald-Regular;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #000;
+    }
+
+    &-items {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+    }
+
+    &-item {
+        display: inline-block;
+        padding: 3px;
+        border: 2px solid white;
+        cursor: pointer;
+        line-height: 0;
+        margin: {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        &.selected {
+            border-color: #000;
+        }
+
+        &:not(.selected):hover {
+            padding: 4px;
+            border: 1px solid #C4C4C4;
+        }
+    }
+}
+
+.color-badge {
+    display: inline-block;
+    height: 17px;
+    width: 17px;
+    line-height: 0;
+}

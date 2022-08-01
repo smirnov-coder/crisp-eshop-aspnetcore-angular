@@ -1,0 +1,45 @@
+﻿.promo-section {
+    &-left {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 100%;
+        align-items: center;
+    }
+
+    &-content {
+        justify-self: end;
+
+        &__text {
+            margin: {
+                top: 15px;
+                bottom: 25px;
+            }
+        }
+    }
+
+    &-title {
+        font-family: Oswald-Medium;
+        font-size: 56px;
+        color: #000;
+        text-transform: uppercase;
+        position: relative;
+        padding-top: 10px;
+
+        &-border {
+            border-top: 2px solid #000;
+            border-right: 2px solid #000;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 95%;
+            height: 100%;
+        }
+    }
+
+    &-text {
+        font-family: Roboto-Light;
+        font-size: 25px;
+        color: #000;
+        padding-right: 5px;
+    }
+}

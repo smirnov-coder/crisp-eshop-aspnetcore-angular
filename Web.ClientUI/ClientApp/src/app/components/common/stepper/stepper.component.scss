@@ -1,0 +1,50 @@
+﻿.stepper {
+    position: relative;
+    width: 120px;
+
+    &-btn {
+        display: inline-flex;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        position: absolute;
+        top: 1px;
+        background: none;
+        font-family: Oswald-Medium;
+        font-size: 28px;
+        color: #C4C4C4;
+
+        &:hover {
+            background-color: #F0F2F2;
+            color: #828282;
+        }
+    }
+
+    &__minus-btn {
+        left: 1px;
+    }
+
+    &__plus-btn {
+        right: 1px;
+    }
+
+    &-input {
+        border: 1px solid #C4C4C4;
+        border-radius: 0;
+        height: 42px;
+        padding: 0 41px;
+        text-align: center;
+        width: 100%;
+        background: none;
+        color: #000;
+        outline-offset: 1px;
+        font-family: Oswald-Regular;
+        font-size: 16px;
+
+        &::placeholder {
+            color: #000;
+        }
+    }
+}

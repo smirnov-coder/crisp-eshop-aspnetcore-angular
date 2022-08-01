@@ -1,0 +1,54 @@
+﻿.header {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto 1fr 1fr;
+    background-color: #000;
+    min-height: 115px;
+    align-items: center;
+    color: #fff;
+
+    &__brand-logo {
+        grid-column: 1 / 2;
+    }
+
+    &__nav-links {
+        grid-column: 3 / 4;
+    }
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+        display: inline;
+
+        &:not(:last-of-type) {
+            margin-right: 10px;
+        }
+    }
+}
+
+.link {
+    font-family: "Oswald-SemiBold";
+    color: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: column;
+
+    &-text {
+        padding: 5px 10px;
+    }
+
+    &.active::after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #EB5757;
+    }
+}

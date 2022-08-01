@@ -1,0 +1,10 @@
+﻿<section class="promo-section-left" [style.background]="getBackground()" [style.height]="sectionHeight">
+    <div class="promo-section-content" [style.width]="contentWidth">
+        <div class="promo-section-title">
+            <div class="promo-section-title-border"></div>
+            {{ title }}
+        </div>
+        <div class="promo-section-text promo-section-content__text">{{ text }}</div>
+        <a [routerLink]="[buttonLink]" class="outlined-btn">{{ buttonText }}</a>
+    </div>
+</section>

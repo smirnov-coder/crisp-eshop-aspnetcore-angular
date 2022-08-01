@@ -1,0 +1,15 @@
+﻿<section class="product-catalog">
+    <section class="product-catalog__filter">
+        filter
+    </section>
+    <section class="product-catalog__list">
+        <div>
+            <dropdown-list [items]="sortings" (selected)="sortingChanged($event.value)"></dropdown-list>
+            <dropdown-list [items]="pageSizes" (selected)="pageSizeChanged($event.value)"></dropdown-list>
+        </div>
+        <div class="product-catalog__thumbnails">
+            <product-list *ngIf="products$ | async as products" [products]="products"></product-list>
+        </div>
+        <pagination class="product-catalog__pagination"></pagination>
+    </section>
+</section>

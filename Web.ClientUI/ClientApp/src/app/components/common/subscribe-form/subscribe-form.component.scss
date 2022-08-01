@@ -1,0 +1,40 @@
+﻿.subscribe-form {
+    &-caption {
+        font-family: Roboto-Medium;
+        font-size: 13px;
+        color: #828282;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    &-email {
+        display: block;
+        width: 100%;
+        background-color: #000;
+        border: 1px #fff solid;
+        padding: 10px 15px;
+        color: #fff;
+        font-family: Roboto-Regular;
+        font-size: 12px;
+        outline-style: none;
+        margin-bottom: 7px;
+    }
+
+    &-submit {
+        display: block;
+        width: 100%;
+        font-family: Oswald-Regular;
+        font-size: 14px;
+        text-transform: uppercase;
+        background-color: #fff;
+        padding: 8px 15px;
+        border: 1px #fff solid;
+        transition: all ease-out 0.2s;
+
+        &:hover {
+            background-color: #EB5757;
+            border-color: #EB5757;
+            color: #fff;
+        }
+    }
+}

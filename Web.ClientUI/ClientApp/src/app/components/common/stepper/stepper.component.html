@@ -1,0 +1,10 @@
+﻿<div class="stepper">
+    <button class="stepper-btn stepper__minus-btn" (click)="decrease()">&minus;</button>
+    <input type="text" class="stepper-input stepper__input" 
+           [value]="value"
+           [placeholder]="value"
+           (keypress)="onKeyPressed($event)" 
+           (input)="onInput($event)" 
+           (paste)="onPaste($event)"/>
+    <button class="stepper-btn stepper__plus-btn" (click)="increase()">+</button>
+</div>
