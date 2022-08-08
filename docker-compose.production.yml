@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+
+  web.client-ui:
+    container_name: crisp--web-client-ui
+    image: crisp/web-client-ui
+    build:
+      context: .
+      dockerfile: Web.ClientUI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=https://*:5001
+    env_file:
+      - ./kestrel-ssl.env
+    ports:
+      - "7001:5001"
+    volumes:
+      - ${CRISP_CERTS_PATH}:/certs
+    depends_on:
+      - catalog
+      - cloud
+
+  catalog:
+    container_name: crisp--microservices-catalog
+    image: crisp/microservices-catalog
+    build:
+      context: .
+      dockerfile: Microservices.Catalog/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5002
+    depends_on:
+      - mongo
+      - cloud
+  
+  mongo:
+    container_name: crisp--mongo-db
+    image: mongo
+    command: mongod --directoryperdb
+    volumes:
+      - "./Data/mongo:/data/db"
+
+  cloud:
+    container_name: crisp--azurite-emu
+    image: mcr.microsoft.com/azure-storage/azurite
+    command: azurite-blob --blobHost 0.0.0.0 --blobPort 9000 --location /data
+    ports:
+      - "9000:9000"
+    volumes:
+      - "./Data/azurite:/data"
