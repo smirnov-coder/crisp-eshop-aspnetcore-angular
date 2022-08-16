@@ -8,12 +8,12 @@
         /// <summary>
         /// Идентификатор товара
         /// </summary>
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
 
         /// <summary>
         /// Идентификатор цвета
         /// </summary>
-        public int ColorId { get; set; }
+        public string ColorId { get; set; }
 
         /// <summary>
         /// Название цвета

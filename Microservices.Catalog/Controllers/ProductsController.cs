@@ -26,7 +26,7 @@ namespace Microservices.Catalog.Controllers
             return Ok(result.Value);
         }
 
-        [HttpGet("{productId:int}")]
+        [HttpGet("{productId}")]
         public async Task<ActionResult<GetProductsResponse>> GetProduct(
             [FromRoute] GetProductRequest request,
             [FromServices] GetProductQueryHandler handler)

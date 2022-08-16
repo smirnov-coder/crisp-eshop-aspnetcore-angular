@@ -1,6 +1,6 @@
-﻿namespace Microservices.Catalog.Domain.Entities
+﻿namespace Microservices.Catalog.Domain.ValueObjects
 {
-    public class ProductAttribute : BaseEntity
+    public class ProductAttribute
     {
         public string Name { get; set; }
 

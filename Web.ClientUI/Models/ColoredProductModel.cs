@@ -2,9 +2,9 @@
 {
     public class ColoredProductModel
     {
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
 
-        public int ColorId { get; set; }
+        public string ColorId { get; set; }
 
         public string ColorName { get; set; }
 

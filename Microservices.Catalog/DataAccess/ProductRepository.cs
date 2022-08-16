@@ -3,34 +3,42 @@ using Core.General;
 using Microservices.Catalog.Cqrs.Queries;
 using Microservices.Catalog.Domain.Entities;
 using Microservices.Catalog.Domain.Enums;
+using Microservices.Catalog.Domain.ValueObjects;
 using Microservices.Catalog.Models;
+using MongoDB.Driver;
 
 namespace Microservices.Catalog.DataAccess
 {
     public class ProductRepository : IProductRepository
     {
         private static readonly Faker Faker = new() { Random = new Randomizer(1234) };
+        private readonly IMongoDatabase _db;
+
+        public ProductRepository(IMongoDatabase db)
+        {
+            _db = db;
+        }
 
         private readonly Color[] _colors = new Color[]
         {
-            new Color { Id = 1, Name = "Red", Hex = "#FF0000" },
-            new Color { Id = 2, Name = "Magenta", Hex = "#FF00FF" },
-            new Color { Id = 3, Name = "Khaki", Hex = "#F0E68C" },
-            new Color { Id = 4, Name = "PaleGreen", Hex = "#98FB98" },
-            new Color { Id = 5, Name = "Orchid", Hex = "#DA70D6" },
-            new Color { Id = 6, Name = "Black", Hex = "#000000" },
+            new Color { Id = "1", Name = "Red", Hex = "#FF0000" },
+            new Color { Id = "2", Name = "Magenta", Hex = "#FF00FF" },
+            new Color { Id = "3", Name = "Khaki", Hex = "#F0E68C" },
+            new Color { Id = "4", Name = "PaleGreen", Hex = "#98FB98" },
+            new Color { Id = "5", Name = "Orchid", Hex = "#DA70D6" },
+            new Color { Id = "6", Name = "Black", Hex = "#000000" },
             //new Color { Id = 7, Name = "White", Hex = "#FFFFFF" },
         };
 
         private readonly Brand[] _brands = new Brand[]
         {
-            new Brand { Id = 1, Name = "Chanel", LogoUrl = "/assets/images/chanel-logo.svg" },
-            new Brand { Id = 2, Name = "Burberry", LogoUrl = "/assets/images/burberry-logo.svg" },
-            new Brand { Id = 3, Name = "Dior", LogoUrl = "/assets/images/dior-logo.svg" },
-            new Brand { Id = 4, Name = "Fendi", LogoUrl = "/assets/images/fendi-logo.svg" },
-            new Brand { Id = 5, Name = "Versace", LogoUrl = "/assets/images/versace-logo.svg" },
-            new Brand { Id = 6, Name = "Gucci", LogoUrl = "/assets/images/gucci-logo.svg" },
-            new Brand { Id = 7, Name = "Armani", LogoUrl = "/assets/images/armani-logo.svg" },
+            new Brand { Id = "1", Name = "Chanel", LogoUrl = "/assets/images/chanel-logo.svg" },
+            new Brand { Id = "2", Name = "Burberry", LogoUrl = "/assets/images/burberry-logo.svg" },
+            new Brand { Id = "3", Name = "Dior", LogoUrl = "/assets/images/dior-logo.svg" },
+            new Brand { Id = "4", Name = "Fendi", LogoUrl = "/assets/images/fendi-logo.svg" },
+            new Brand { Id = "5", Name = "Versace", LogoUrl = "/assets/images/versace-logo.svg" },
+            new Brand { Id = "6", Name = "Gucci", LogoUrl = "/assets/images/gucci-logo.svg" },
+            new Brand { Id = "7", Name = "Armani", LogoUrl = "/assets/images/armani-logo.svg" },
         };
 
         private readonly string[] _sizes = new string[] { "XS", "S", "L", "M", "XL", "XXL" };
@@ -58,8 +66,8 @@ namespace Microservices.Catalog.DataAccess
                     ImageGallery = GetSomeImageUrls().ToArray(),
                     Attributes = new[]
                     {
-                        new ProductAttribute { Id = 1, Name = "DressLength", Value = "Short" },
-                        new ProductAttribute { Id = 2, Name = "ManufacturerCountry", Value = "France" },
+                        new ProductAttribute { Name = "DressLength", Value = "Short" },
+                        new ProductAttribute { Name = "ManufacturerCountry", Value = "France" },
                     },
                     AvailableSizes = sizes,
                     Size = Faker.PickRandom(sizes.Where(s => s.Available)).Size

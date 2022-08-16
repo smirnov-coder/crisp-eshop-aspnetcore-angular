@@ -4,6 +4,6 @@ namespace Microservices.Catalog.Cqrs.Queries
 {
     public class GetProductQuery : IQuery
     {
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
     }
 }

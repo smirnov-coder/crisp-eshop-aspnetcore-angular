@@ -1,4 +1,5 @@
 ﻿using Microservices.Catalog.Domain.Enums;
+using Microservices.Catalog.Domain.ValueObjects;
 
 namespace Microservices.Catalog.Domain.Entities
 {
@@ -13,7 +14,7 @@ namespace Microservices.Catalog.Domain.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Наименование бренда
+        /// Бренд (торговая марка)
         /// </summary>
         public Brand Brand { get; set; }
 
@@ -65,7 +66,7 @@ namespace Microservices.Catalog.Domain.Entities
         /// <summary>
         /// Ссылка на файл главного изображения (обложки)
         /// </summary>
-        public string CovetImageUrl { get; set; }
+        public string CoverImageUrl { get; set; }
 
         /// <summary>
         /// Коллекция ссылок на файлы галереи товара

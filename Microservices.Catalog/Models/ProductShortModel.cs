@@ -10,7 +10,7 @@ namespace Microservices.Catalog.Models
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Наименование товара
@@ -30,7 +30,7 @@ namespace Microservices.Catalog.Models
         /// <summary>
         /// Идентификатор цвета товара
         /// </summary>
-        public int ColorId { get; set; }
+        public string ColorId { get; set; }
 
         /// <summary>
         /// Целевая аудитория товара

@@ -1,26 +1,22 @@
 using Core.Swagger;
+using Microservices.Catalog.Cqrs;
 using Microservices.Catalog.DataAccess;
+using Microservices.Catalog.Services;
 using Newtonsoft.Json.Converters;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-Assembly.GetExecutingAssembly()
-    .DefinedTypes
-    .ToList()
-    .ForEach(type =>
-    {
-        if (type.BaseType?.Name.Contains("HandlerBase") == true)
-            builder.Services.AddTransient(type);
-    });
-
-//builder.Services.AddAutoMapper(typeof(MappingsProfile).Assembly);
+builder.Services
+    .AddMongoDb()
+    .AddCqrsHandlers()
+    .AddTransient<IProductRepository, ProductRepository>()
+    .AddTransient<IFileService, FileService>();
 
 builder.Services
     .AddControllers()
     .AddNewtonsoftJson(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services
     .AddEndpointsApiExplorer()
@@ -38,5 +34,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    await DataInitializer.InitializeAsync(scope.ServiceProvider);
+}
 
 app.Run();

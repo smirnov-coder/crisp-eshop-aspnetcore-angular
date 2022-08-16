@@ -1,4 +1,4 @@
-﻿using Microservices.Catalog.Domain.Entities;
+﻿using Microservices.Catalog.Domain.ValueObjects;
 
 namespace Microservices.Catalog.Models
 {
