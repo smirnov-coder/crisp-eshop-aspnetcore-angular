@@ -57,4 +57,10 @@ export class ProductDetailsComponent implements OnInit {
     calcTotalPrice(quantity: number) {
         this.totalPrice = quantity * (this.product?.price ?? 0);
     }
+
+    getImageGallery() {
+        let imageGallery = [...this.product!.imageGallery];
+        imageGallery.unshift(this.product!.coverImageUrl);
+        return imageGallery;
+    }
 }

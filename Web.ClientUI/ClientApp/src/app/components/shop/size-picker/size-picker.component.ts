@@ -24,11 +24,13 @@ export class SizePickerComponent implements OnInit {
     @Output() itemsSelected = new EventEmitter<SizeItem[]>();
 
     ngOnInit(): void {
-        this.selected$.pipe(
+        this.selected$
+            .pipe(
                 takeWhile(() => this.subscribed),
                 startWith(this.multiple ? null : this.items.find(x => x.isSelected)),
                 pairwise()
-            ).subscribe(([prev, current]) => {
+            )
+            .subscribe(([prev, current]) => {
                 if (!this.multiple) {
                     if (!prev) {
                         current!.isSelected = true;

@@ -35,7 +35,7 @@ export const loadError = createAction(
 
 export const loadProduct = createAction(
     ActionTypes.CatalogLoadProduct,
-    props<{ productId: number }>()
+    props<{ productId: string }>()
 );
 
 export const loadProductSuccess = createAction(

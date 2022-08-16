@@ -1,4 +1,5 @@
-﻿using Microservices.Catalog.Domain.Enums;
+﻿using Microservices.Catalog.Domain.Entities;
+using Microservices.Catalog.Domain.Enums;
 
 namespace Microservices.Catalog.Models
 {
@@ -45,6 +46,25 @@ namespace Microservices.Catalog.Models
         /// <summary>
         /// Доступные цвета товара
         /// </summary>
-        public ColoredProductModel[] AvailableColors { get; set; }
+        public IEnumerable<ColoredProductModel> AvailableColors { get; set; }
+
+        public string CoverImageUrl { get; set; }
+
+        public ProductShortModel()
+        {
+        }
+
+        public ProductShortModel(Product product)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Brand = product.Brand.Name;
+            Price = product.Price;
+            ColorId = product.Color.Id;
+            Audience = product.Audience;
+            Category = product.Category;
+            AvailableColors = product.AvailableColors.Select(c => new ColoredProductModel(c)).ToArray();
+            CoverImageUrl = product.CoverImageUrl;
+        }
     }
 }

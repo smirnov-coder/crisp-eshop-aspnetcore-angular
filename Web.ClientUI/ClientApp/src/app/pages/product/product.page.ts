@@ -20,13 +20,12 @@ export class ProductPage implements OnInit {
     ngOnInit(): void {
         this.product$ = this.store.select(getProduct);
 
-        this.route.paramMap.pipe(
-                takeWhile(() => this.subscribed)
-            )
+        this.route.paramMap
+            .pipe(takeWhile(() => this.subscribed))
             .subscribe(params => {
-                let id = params.get("id");
-                if (id && +id) {
-                    this.store.dispatch(loadProduct({ productId: +id }));
+                const id = params.get("id");
+                if (id) {
+                    this.store.dispatch(loadProduct({ productId: id }));
                 }
             });
     }

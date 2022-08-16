@@ -1,9 +1,9 @@
 ﻿<section class="product-details">
     <div class="product-details__gallery">
-        <product-gallery [images]="product?.imageGallery"></product-gallery>
+        <product-gallery [images]="getImageGallery()"></product-gallery>
     </div>
     <div class="product-details__primary-info">
-        <div>/// Breadcrumbs ///</div>
+        <!--<div>/// Breadcrumbs ///</div>-->
         <div class="product-details-brand">{{ product?.brand }}</div>
         <div class="product-details-name product-details__name">{{ product?.name }}</div>
         <color-picker [items]="colors" 

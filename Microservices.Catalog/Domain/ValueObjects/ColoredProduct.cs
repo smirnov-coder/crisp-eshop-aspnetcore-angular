@@ -1,11 +1,11 @@
-﻿using Microservices.Catalog.Domain.ValueObjects;
+﻿using Microservices.Catalog.Domain.Entities;
 
-namespace Microservices.Catalog.Models
+namespace Microservices.Catalog.Domain.ValueObjects
 {
     /// <summary>
     /// Товар, доступный в другом цвете
     /// </summary>
-    public class ColoredProductModel
+    public class ColoredProduct
     {
         /// <summary>
         /// Идентификатор товара
@@ -32,17 +32,13 @@ namespace Microservices.Catalog.Models
         /// </summary>
         public string ImageUrl { get; set; }
 
-        public ColoredProductModel()
+        public ColoredProduct(Product product)
         {
-        }
-
-        public ColoredProductModel(ColoredProduct product)
-        {
-            ProductId = product.ProductId;
-            ColorId = product.ColorId;
-            ColorName = product.ColorName;
-            ColorHex = product.ColorHex;
-            ImageUrl = product.ImageUrl;
+            ProductId = product.Id;
+            ColorId = product.Color.Id;
+            ColorName = product.Color.Name;
+            ColorHex = product.Color.Hex;
+            ImageUrl = product.CoverImageUrl;
         }
     }
 }

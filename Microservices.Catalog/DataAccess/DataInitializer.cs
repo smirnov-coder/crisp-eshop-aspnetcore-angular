@@ -3,8 +3,10 @@ using Azure.Storage.Blobs.Models;
 using Bogus;
 using Microservices.Catalog.Domain.Entities;
 using Microservices.Catalog.Domain.Enums;
+using Microservices.Catalog.Domain.ValueObjects;
 using Microservices.Catalog.General;
 using Microservices.Catalog.Services;
+using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
 
 namespace Microservices.Catalog.DataAccess
@@ -97,31 +99,55 @@ namespace Microservices.Catalog.DataAccess
             var sizes = new string[] { "XS", "S", "L", "M", "XL", "XXL", "XXXL" };
             foreach (var (audience, category) in GetPairs())
             {
-                var codes = new string[10];
-                Array.Fill(codes, Faker.Commerce.Ean13());
+                var codesAndPrices = new Tuple<string, decimal>[10];
+                Array.Fill(codesAndPrices, new Tuple<string, decimal>(
+                    Faker.Commerce.Ean13(),
+                    Math.Round(Faker.Random.Decimal(50, 500), 2)));
 
                 for (int i = 0; i < 10; i++)
                 {
                     var brand = Faker.PickRandom(brands);
                     var color = Faker.PickRandom(colors);
-                    productsData.Add(new Product
+                    var (code, price) = Faker.PickRandom(codesAndPrices);
+                    var product = new Product
                     {
                         Name = Faker.Commerce.ProductName(),
                         Brand = brand,
                         Category = category,
                         Audience = audience,
-                        Price = Math.Round(Faker.Random.Decimal(50, 500), 2),
+                        Price = price,
                         Color = color,
-                        Code = Faker.PickRandom(codes),
+                        Code = code,
                         Description = Faker.Commerce.ProductDescription(),
                         AdditionalInfo = Faker.Commerce.ProductDescription(),
                         CoverImageUrl = $"https://placekitten.com/{Faker.Random.Int(300, 600)}/{Faker.Random.Int(600, 1200)}",
                         ImageGallery = GetSomeImageUrls().ToArray(),
                         Size = Faker.PickRandom(sizes),
-                        StockQuantity = Faker.Random.Int(0, 50)
-                    });
+                        StockQuantity = Faker.Random.Int(0, 50),
+                    };
+
+                    if (!productsData.Any(p => p.Code == product.Code && p.Color.Id == product.Color.Id && p.Size == product.Size))
+                    {
+                        product.Id = StringObjectIdGenerator.Instance.GenerateId(products, product).ToString();
+                        productsData.Add(product);
+                    }
                 }
             }
+
+            productsData.ForEach(product =>
+            {
+                product.AvailableColors = productsData
+                    .Where(p => p.Code == product.Code)
+                    .Select(p => new ColoredProduct(p))
+                    .Prepend(new ColoredProduct(product))
+                    .DistinctBy(p => p.ColorId)
+                    .ToList();
+
+                product.AvailableSizes = productsData
+                    .Where(p => p.Code == product.Code && p.Color.Id == product.Color.Id)
+                    .Select(p => new SizedProduct(p))
+                    .ToList();
+            });
 
             productsData = Faker.Random.Shuffle(productsData).ToList();
             return products.InsertManyAsync(productsData);

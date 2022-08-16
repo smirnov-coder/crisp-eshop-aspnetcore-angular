@@ -31,7 +31,7 @@ namespace Web.ClientUI.Controllers
             return Ok(result.Value);
         }
 
-        [HttpGet("{productId:int}")]
+        [HttpGet("{productId}")]
         public async Task<ActionResult<GetProductResponse>> GetProduct([FromRoute]GetProductRequest request)
         {
             var result = await _productService.GetProductAsync(request);

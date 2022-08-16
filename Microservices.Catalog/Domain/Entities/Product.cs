@@ -38,6 +38,8 @@ namespace Microservices.Catalog.Domain.Entities
         /// </summary>
         public Color Color { get; set; }
 
+        public ICollection<ColoredProduct> AvailableColors { get; set; }
+
         /// <summary>
         /// Артикул товара
         /// </summary>
@@ -47,6 +49,8 @@ namespace Microservices.Catalog.Domain.Entities
         /// Размер
         /// </summary>
         public string Size { get; set; }
+
+        public ICollection<SizedProduct> AvailableSizes { get; set; }
 
         /// <summary>
         /// Количество единиц товара на складе
@@ -72,7 +76,5 @@ namespace Microservices.Catalog.Domain.Entities
         /// Коллекция ссылок на файлы галереи товара
         /// </summary>
         public IList<string> ImageGallery { get; set; }
-
-        public IList<ProductAttribute> Attributes { get; set; }
     }
 }
