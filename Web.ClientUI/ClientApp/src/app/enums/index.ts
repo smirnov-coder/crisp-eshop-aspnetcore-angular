@@ -8,7 +8,6 @@
 export enum Audience {
     Men = "men",
     Women = "women",
-    MenAndWomen = "men-and-women"
 }
 
 export enum Category {

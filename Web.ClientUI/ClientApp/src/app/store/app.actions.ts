@@ -1,10 +1,10 @@
 ﻿export enum ActionTypes {
-    CatalogSetSorting = "CATALOG_SET_SORTING",
-    CatalogSetPage = "CATALOG_SET_PAGE",
-    CatalogSetPageSize = "CATALOG_SET_PAGE_SIZE",
-    CatalogLoadProducts = "CATALOG_LOAD_PRODUCTS",
-    CatalogLoadProductsSuccess = "CATALOG_LOAD_PRODUCTS_SUCCESS",
-    CatalogLoadError = "CATALOG_LOAD_ERROR",
-    CatalogLoadProduct = "CATALOG_LOAD_PRODUCT",
-    CatalogLoadProductSuccess = "CATALOG_LOAD_PRODUCT_SUCCESS",
+    CatalogSetSorting = "[Catalog] Set sorting",
+    CatalogSetPage = "[Catalog] Set page",
+    CatalogSetPageSize = "[Catalog] Set page size",
+    CatalogLoadProducts = "[Catalog] Load products",
+    CatalogLoadProductsSuccess = "[Catalog] Load products success",
+    CatalogLoadError = "[Catalog] Load error",
+    CatalogLoadProduct = "[Catalog] Load product",
+    CatalogLoadProductSuccess = "[Catalog] Load product success",
 }

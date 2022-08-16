@@ -1,8 +1,4 @@
-﻿import { catalogReducer } from "./catalog";
-
-//export interface AppState {
-//    catalog: CatalogState;
-//}
+﻿import { catalogReducer } from "../catalog/store/catalog.reducer";
 
 export const appReducer = {
     catalog: catalogReducer

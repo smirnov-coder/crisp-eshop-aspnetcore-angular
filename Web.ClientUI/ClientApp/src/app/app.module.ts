@@ -10,6 +10,7 @@ import {
     AppFooterComponent,
     AppHeaderComponent,
     BrandLogoComponent,
+    BrandsCarouselComponent,
     BreadCrumbsComponent,
     DropdownListComponent,
     FooterContactsComponent,
@@ -17,16 +18,13 @@ import {
     FooterMenuComponent,
     FooterSocialMediaComponent,
     ProductThumbnailComponent,
-    PromoSectionLeftComponent,
-    StepperComponent,
-    SubscribeFormComponent
-} from './components/common';
-import { HomePage, ProductPage, ShopPage } from './pages';
-import {
-    BrandsCarouselComponent,
     PromoGridComponent,
-    PromoSliderComponent
-} from './components/home';
+    PromoSectionLeftComponent,
+    PromoSliderComponent,
+    StepperComponent,
+    SubscribeFormComponent,
+} from './common/components';
+import { ProductPage, ShopPage } from './catalog/pages';
 import routes from './app.routes';
 import {
     ProductCatalogComponent,
@@ -36,12 +34,14 @@ import {
     SizePickerComponent,
     ColorPickerComponent,
     ProductGalleryComponent
-} from './components/shop';
+} from './catalog/components';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { CatalogEffects, CatalogService } from './store/catalog';
+import { HomePage } from './common/pages';
+import { CatalogEffects } from './catalog/store';
+import { CatalogService } from './catalog/services';
 
 @NgModule({
     declarations: [

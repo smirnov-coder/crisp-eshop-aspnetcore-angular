@@ -1,0 +1,9 @@
+﻿<section>
+    <h4 class="footer-section-title">Contact us</h4>
+    <ul class="contact-list">
+        <li *ngFor="let contact of contacts" class="contact-list__item">
+            <div class="contact-title">{{ contact.title }}</div>
+            <div class="contact-text">{{ contact.text }}</div>
+        </li>
+    </ul>
+</section>
